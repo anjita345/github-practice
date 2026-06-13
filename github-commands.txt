@@ -1,0 +1,264 @@
+bhai mujhe ek solid example de de github cli ka kaise branch create karna hai aur kaise comiit , pull request , changes kaise merge karna hai dusre banch me . aur branch use kyu karte hai . islka mujhe ek solid example dede ya excercise jise mai practice karu. code bhi dede taki mai tupe karke practice karu. aur ha startig se bata repo banane se lekar last tak
+
+Bhai agar tu GitHub CLI (gh) aur Git ko properly samajh gaya, toh company me branching, PR, code review sab easy lagne lagega.
+
+Main tujhe real developer workflow bata raha hu jo companies me use hota hai.
+
+Scenario
+
+Maan le tu ek project bana raha hai:
+
+Todo App
+
+Main branch me stable code rahega.
+
+Tu ek naya feature add karega:
+
+👉 Login Page
+
+Iske liye alag branch banayega.
+
+Step 1: GitHub pe Repo Create Kar
+
+GitHub pe ja:
+
+New Repository
+
+Name:
+
+todo-app
+
+Create repo.
+
+Step 2: Local Folder Bana
+mkdir todo-app
+cd todo-app
+
+Git initialize:
+
+git init
+Step 3: Simple Code Create Kar
+
+app.js
+
+console.log("Todo App Started");
+Step 4: GitHub Repo Connect Kar
+
+GitHub CLI login:
+
+gh auth login
+
+Repository connect:
+
+git remote add origin https://github.com/USERNAME/todo-app.git
+
+Check:
+
+git remote -v
+Step 5: First Commit
+
+Files add:
+
+git add .
+
+Commit:
+
+git commit -m "Initial project setup"
+
+Rename branch:
+
+git branch -M main
+
+Push:
+
+git push -u origin main
+
+Ab GitHub pe code dikh jayega.
+
+Step 6: Branch Kyu Use Karte Hai?
+
+Soch:
+
+Main branch:
+
+console.log("Todo App Started");
+
+Ab tu login feature bana raha hai.
+
+Agar direct main me kaam karega aur code toot gaya toh?
+
+Production kharab.
+
+Isliye:
+
+main
+|
+|---- login-feature
+
+Alag branch me kaam.
+
+Main safe rahega.
+
+Step 7: Branch Create Kar
+
+GitHub CLI nahi, Git se:
+
+git checkout -b login-feature
+
+Check:
+
+git branch
+
+Output:
+
+* login-feature
+  main
+Step 8: Code Change Kar
+
+app.js
+
+console.log("Todo App Started");
+
+function login() {
+    console.log("User Logged In");
+}
+
+login();
+Step 9: Commit Changes
+git add .
+git commit -m "Added login functionality"
+Step 10: Push Branch
+git push -u origin login-feature
+
+Ab GitHub pe branch aa gayi.
+
+Step 11: Pull Request Create Using GitHub CLI
+gh pr create
+
+Questions aayenge.
+
+Example:
+
+Title:
+Add login functionality
+
+Body:
+Added login function in app.js
+
+PR create ho jayega.
+
+Step 12: PR Check Kar
+
+Browser me:
+
+gh pr view --web
+
+Ya:
+
+gh pr list
+Step 13: Merge PR
+
+Agar review pass ho gaya:
+
+gh pr merge
+
+Ya:
+
+gh pr merge --squash
+
+Company me mostly squash use hota hai.
+
+Step 14: Latest Main Pull Kar
+
+Main branch pe aa:
+
+git checkout main
+
+Latest code:
+
+git pull origin main
+
+Ab login code main me aa gaya.
+
+Real Exercise (Practice)
+Day 1
+
+Create:
+
+console.log("Todo App Started");
+
+Commit.
+
+Push.
+
+Day 2
+
+Branch:
+
+git checkout -b add-login
+
+Code:
+
+function login() {
+    console.log("Login Success");
+}
+
+Commit.
+
+Push.
+
+Create PR.
+
+Merge.
+
+Day 3
+
+Branch:
+
+git checkout -b add-register
+
+Code:
+
+function register() {
+    console.log("Register Success");
+}
+
+Commit.
+
+Push.
+
+PR.
+
+Merge.
+
+Important Commands
+Current Branch
+git branch
+All Branches
+git branch -a
+Switch Branch
+git checkout main
+Create New Branch
+git checkout -b feature-name
+Pull Latest Changes
+git pull origin main
+Push Code
+git push origin branch-name
+Create PR
+gh pr create
+List PR
+gh pr list
+Merge PR
+gh pr merge
+Delete Branch
+git branch -d login-feature
+Company Workflow Example
+main
+ |
+ |---- feature/login
+ |
+ |---- feature/register
+ |
+ |---- feature/payment
+
+Har developer apni branch pe kaam karta hai.
