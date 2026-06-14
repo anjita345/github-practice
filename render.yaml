@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: chat-app
+    env: node
+    branch: main
+    plan: starter
+    buildCommand: cd chat-app && npm install
+    startCommand: cd chat-app && npm start
+    autoDeploy: true
+    instanceCount: 1
+    healthCheckPath: /health
+    root: chat-app
+
+# Notes:
+# - Connect this repo in Render dashboard and it will use render.yaml to create the service.
+# - If you prefer to configure via the Render UI, create a Web Service and point it at the chat-app directory.
