@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Users — Private Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">Online Users</div>
+      <ul id="usersList" class="users-list"></ul>
+    </aside>
+
+    <div class="main-column">
+      <header class="chat-header">
+        <div class="title">Private Chats</div>
+        <div id="currentUser" class="username">Not joined</div>
+      </header>
+
+      <main style="padding:20px;">
+        <p>Select a user from the left to start a private conversation. Private chat panels appear at the bottom-right.</p>
+      </main>
+    </div>
+
+    <div id="privateChats" class="private-chats" aria-live="polite"></div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="users.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Private Chat — Join</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Welcome card -->
+    <div id="welcome" class="overlay">
+      <div class="card">
+        <h1>Welcome</h1>
+        <p>Enter your display name and select your gender to continue.</p>
+        <form id="nameForm">
+          <input id="nameInput" type="text" placeholder="Your name" maxlength="50" required />
+          <select id="genderSelect" aria-label="Select gender" required>
+            <option value="" disabled selected>Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+            <option value="unspecified">Prefer not to say</option>
+          </select>
+          <button type="submit" class="btn">Continue</button>
+        </form>
+      </div>
+    </div>
+
+    <main style="padding:24px;text-align:center;">
+      <h2>Private chat app</h2>
+      <p>After joining you'll be taken to the Users page to start one-to-one chats.</p>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

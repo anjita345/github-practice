@@ -1,0 +1,31 @@
+# Example fly.toml - adjust app name and region before use
+app = "your-fly-app-name"
+
+# Optional: set a preferred region (e.g., "ams", "iad", "ord")
+primary_region = "iad"
+
+[env]
+# Fly sets PORT automatically; keep this if you want to override
+  PORT = "8080"
+
+# Process configuration
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls"]
+    port = 443
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+
+# Notes:
+# - Run `fly launch --name your-fly-app-name` locally to generate a proper fly.toml and register the app.
+# - For GitHub Actions remote deploys (workflow uses `flyctl deploy --remote-only`), ensure you add FLY_API_TOKEN as a repo secret.
+# - Adjust primary_region and ports as needed.
